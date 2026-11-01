@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecturer Dashboard | BTU ELIBRARY</title>
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-icon">B</div>
+        <div>
+          <h1>BTU ELIBRARY</h1>
+          <p>Bomet University</p>
+        </div>
+      </div>
+
+      <a href="index.html" class="login-button">Back to Home</a>
+      <button type="button" id="lecturer-signout-btn" class="login-button">
+        Sign Out
+      </button>
+    </header>
+
+    <main class="student-dashboard">
+      <aside class="dashboard-sidebar">
+        <h2>Lecturer Menu</h2>
+
+        <nav>
+          <a href="#overview" class="active">Overview</a>
+          <a href="#materials">Learning Materials</a>
+          <a href="#assessments">Online CATs</a>
+          <a href="#profile">My Profile</a>
+        </nav>
+      </aside>
+
+      <section class="dashboard-content">
+        <div id="overview" class="dashboard-welcome">
+          <h2>Lecturer Dashboard</h2>
+          <p>
+            Manage learning materials and continuous assessment tests in one
+            place.
+          </p>
+        </div>
+        <!-- DASHBOARD STATISTICS -->
+        <section class="dashboard-stats">
+          <div class="stat-card">
+            <h3>Total Materials</h3>
+            <p id="total-materials">0</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Total CATs</h3>
+            <p id="total-cats">0</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Registered Students</h3>
+            <p id="total-students">0</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Recent Uploads</h3>
+            <p id="recent-uploads">0</p>
+          </div>
+        </section>
+        <section id="materials" class="dashboard-section">
+          <h2>Learning Materials</h2>
+          <p>Add lecture notes and other learning resources for students.</p>
+
+          <form id="material-creation-form" class="dashboard-form">
+            <div class="form-group">
+              <label for="material-title">Material Title</label>
+              <input
+                type="text"
+                id="material-title"
+                name="material-title"
+                placeholder="e.g. Introduction to GIS"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="material-course">Course Name</label>
+              <input
+                type="text"
+                id="material-course"
+                name="material-course"
+                placeholder="Enter the official course name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="material-description">Description</label>
+              <textarea
+                id="material-description"
+                name="material-description"
+                rows="3"
+                placeholder="Briefly describe the learning material"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="material-link">Material Link (optional)</label>
+              <input
+                type="url"
+                id="material-link"
+                name="material-link"
+                placeholder="https://example.com/lecture-notes.pdf"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="material-file">Upload Learning Material</label>
+              <input
+                type="file"
+                id="material-file"
+                name="material-file"
+                accept=".pdf,.doc,.docx,.ppt,.pptx"
+              />
+              <small>
+                Accepted formats: PDF, Word documents, and PowerPoint
+                presentations.
+              </small>
+            </div>
+
+            <button type="submit" class="login-button">
+              Add Learning Material
+            </button>
+
+            <p id="material-form-message" role="status"></p>
+          </form>
+
+          <h3>Added Learning Materials</h3>
+          <div id="lecturer-materials-list">
+            <p class="empty-state">
+              No learning materials have been added yet.
+            </p>
+          </div>
+        </section>
+
+        <section id="assessments" class="dashboard-section">
+          <h2>Online CATs</h2>
+          <p>Create and manage continuous assessment tests.</p>
+
+          <form id="cat-creation-form" class="dashboard-form">
+            <div class="form-group">
+              <label for="cat-title">CAT Title</label>
+              <input
+                type="text"
+                id="cat-title"
+                name="cat-title"
+                placeholder="e.g. CAT 1"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="course-name">Course Name</label>
+              <input
+                type="text"
+                id="course-name"
+                name="course-name"
+                placeholder="Enter the official course name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cat-instructions">Instructions</label>
+              <textarea
+                id="cat-instructions"
+                name="cat-instructions"
+                placeholder="Enter instructions for students"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="cat-duration">Duration (minutes)</label>
+              <input
+                type="number"
+                id="cat-duration"
+                name="cat-duration"
+                min="1"
+                placeholder="e.g. 30"
+                required
+              />
+            </div>
+
+            <button type="submit" class="login-button">Create CAT</button>
+
+            <p id="cat-form-message" role="status"></p>
+          </form>
+
+          <hr />
+
+          <h3>Add Questions to a CAT</h3>
+          <p>
+            Select the CAT, then enter a question and its four possible answers.
+          </p>
+
+          <form id="question-creation-form" class="dashboard-form">
+            <div class="form-group">
+              <label for="question-cat">Select CAT</label>
+              <select id="question-cat" required>
+                <option value="">Choose a CAT</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="question-text">Question</label>
+              <textarea
+                id="question-text"
+                rows="3"
+                placeholder="Enter the question"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="option-a">Option A</label>
+              <input type="text" id="option-a" required />
+            </div>
+
+            <div class="form-group">
+              <label for="option-b">Option B</label>
+              <input type="text" id="option-b" required />
+            </div>
+
+            <div class="form-group">
+              <label for="option-c">Option C</label>
+              <input type="text" id="option-c" required />
+            </div>
+
+            <div class="form-group">
+              <label for="option-d">Option D</label>
+              <input type="text" id="option-d" required />
+            </div>
+
+            <div class="form-group">
+              <label for="correct-answer">Correct Answer</label>
+              <select id="correct-answer" required>
+                <option value="">Choose the correct answer</option>
+                <option value="A">Option A</option>
+                <option value="B">Option B</option>
+                <option value="C">Option C</option>
+                <option value="D">Option D</option>
+              </select>
+            </div>
+
+            <button type="submit" class="login-button">Add Question</button>
+            <button type="button" id="cancel-edit-btn" hidden>
+              Cancel Editing
+            </button>
+
+            <p id="question-form-message" role="status"></p>
+          </form>
+
+          <div class="form-group">
+            <label for="filter-questions-cat">View questions for a CAT</label>
+            <select id="filter-questions-cat">
+              <option value="">All CATs</option>
+            </select>
+          </div>
+
+          <div id="created-questions"></div>
+
+          <div id="created-cat-details"></div>
+          <hr />
+
+          <!-- LECTURER CAT PERFORMANCE DASHBOARD -->
+          <div id="lecturer-cat-performance">
+            <h3>CAT Performance Overview</h3>
+            <p>Monitor student performance in your published assessments.</p>
+
+            <div class="results-summary">
+              <div class="results-summary-card">
+                <h3>Total Attempts</h3>
+                <p id="lecturer-total-attempts">0</p>
+              </div>
+
+              <div class="results-summary-card">
+                <h3>Average Score</h3>
+                <p id="lecturer-average-score">0%</p>
+              </div>
+
+              <div class="results-summary-card">
+                <h3>Highest Score</h3>
+                <p id="lecturer-highest-score">0%</p>
+              </div>
+
+              <div class="results-summary-card">
+                <h3>Lowest Score</h3>
+                <p id="lecturer-lowest-score">0%</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lecturer-performance-cat">Select CAT</label>
+              <select id="lecturer-performance-cat">
+                <option value="">Choose a CAT</option>
+              </select>
+            </div>
+
+            <div id="lecturer-cat-results">
+              <p>Select a CAT to view student performance.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr />
+
+        <!-- CAT LOCKDOWN VIOLATION REPORT -->
+        <details id="lecturer-cat-violations">
+  <summary>CAT Lockdown Violation Report</summary>
+          <h3>CAT Lockdown Violation Report</h3>
+
+          <p>Review incidents recorded during student assessments.</p>
+
+          <div class="results-summary">
+            <div class="results-summary-card">
+              <h3>Total Violations</h3>
+              <p id="lecturer-total-violations">0</p>
+            </div>
+
+            <div class="results-summary-card">
+              <h3>Students Involved</h3>
+              <p id="lecturer-affected-students">0</p>
+            </div>
+
+            <div class="results-summary-card">
+              <h3>Tab Switches</h3>
+              <p id="lecturer-tab-switches">0</p>
+            </div>
+
+            <div class="results-summary-card">
+              <h3>Fullscreen Exits</h3>
+              <p id="lecturer-fullscreen-exits">0</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lecturer-violations-cat">Filter by CAT</label>
+            <select id="lecturer-violations-cat">
+              <option value="">All CATs</option>
+            </select>
+          </div>
+
+          <div id="lecturer-violations-message" role="status">
+            Loading violation report...
+          </div>
+
+          <div id="lecturer-violations-list"></div>
+       </details>
+
+        <!-- LECTURER PROFILE -->
+        <section id="profile" class="dashboard-section">
+          <h2>My Profile</h2>
+
+          <div class="profile-card">
+            <div class="profile-avatar">
+              <span id="lecturer-profile-initial">L</span>
+            </div>
+
+            <div class="profile-details">
+              <p>
+                <strong>Email:</strong>
+                <span id="lecturer-profile-email">Loading...</span>
+              </p>
+
+              <p>
+                <strong>Full Name:</strong>
+                <span id="lecturer-profile-name">Not provided</span>
+              </p>
+
+              <p>
+                <strong>Role:</strong>
+                <span id="lecturer-profile-role">Lecturer</span>
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="edit-lecturer-profile-btn"
+              class="login-button"
+            >
+              Edit Profile
+            </button>
+          </div>
+
+          <p id="lecturer-profile-message" role="status"></p>
+        </section>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="lecturer.js"></script>
+  </body>
+</html>

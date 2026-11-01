@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online CAT | BTU ELIBRARY</title>
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-icon">B</div>
+        <div>
+          <h1>BTU ELIBRARY</h1>
+          <p>Bomet University</p>
+        </div>
+      </div>
+
+      <a href="student.html" class="login-button"> Back to Dashboard </a>
+    </header>
+
+    <main class="cat-page">
+      <section class="cat-instructions">
+        <h2>Online CAT</h2>
+        <p>
+          Assessment instructions and questions will appear here when an
+          authorized lecturer publishes a CAT.
+        </p>
+      </section>
+      <section class="available-cats">
+        <h2>Available CATs</h2>
+        <p id="cat-list-message">Loading assessments...</p>
+        <div id="available-cats-list"></div>
+      </section>
+
+      <section id="cat-questions" class="cat-question-section">
+        <p id="no-assessment-message" class="empty-state">
+          No assessment has been selected.
+        </p>
+
+        <form id="cat-answer-form" hidden>
+          <fieldset class="question-card">
+            <legend id="question-text">Question text</legend>
+
+            <label class="answer-option">
+              <input type="radio" name="answer" value="A" required />
+              <span id="answer-a-text">Option A</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="answer" value="B" />
+              <span id="answer-b-text">Option B</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="answer" value="C" />
+              <span id="answer-c-text">Option C</span>
+            </label>
+
+            <label class="answer-option">
+              <input type="radio" name="answer" value="D" />
+              <span id="answer-d-text">Option D</span>
+            </label>
+          </fieldset>
+
+          <div class="question-navigation">
+            <button type="button" id="previous-question" disabled>
+              Previous
+            </button>
+
+            <span id="question-counter">Question 0 of 0</span>
+
+            <button type="button" id="next-question" disabled>Next</button>
+          </div>
+
+          <button type="submit" class="sign-in-button">Submit CAT</button>
+        </form>
+      </section>
+      <section class="available-cats">
+        <h2>My CAT Results</h2>
+        <p id="results-message">Your completed assessments will appear here.</p>
+        <div id="student-results-list"></div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="cat.js"></script>
+  </body>
+</html>

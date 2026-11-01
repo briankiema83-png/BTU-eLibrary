@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard | BTU ELIBRARY</title>
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-icon">B</div>
+        <div>
+          <h1>BTU ELIBRARY</h1>
+          <p>Bomet University</p>
+        </div>
+      </div>
+
+      <button type="button" id="student-signout-btn" class="login-button">
+        Sign Out
+      </button>
+    </header>
+
+    <main class="student-dashboard">
+      <aside class="sidebar">
+        <h2>Student Portal</h2>
+
+        <nav aria-label="Student navigation">
+          <ul>
+            <li>
+              <a href="#my-profile">My Profile</a>
+            </li>
+            <li>
+              <a href="#my-courses">My Courses</a>
+            </li>
+            <li>
+              <a href="#library">Learning Materials</a>
+            </li>
+            <li>
+              <a href="cat.html">Online CATs</a>
+            </li>
+            <li>
+              <a href="#my-results">My CAT Results</a>
+            </li>
+            <li>
+              <a href="#my-profile">My Profile</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="dashboard-content">
+        <div id="overview" class="dashboard-welcome">
+          <h2>Welcome to Your Dashboard</h2>
+          <p>
+            Access your learning materials and online assessments in one place.
+          </p>
+        </div>
+
+        <div class="dashboard-summary">
+          <a href="#library" class="summary-card">
+            <h3>E-Library</h3>
+            <p>Browse learning materials</p>
+          </a>
+
+          <a href="#cats" class="summary-card">
+            <h3>Online CATs</h3>
+            <p>View assessments</p>
+          </a>
+
+          <a href="#profile" class="summary-card">
+            <h3>My Profile</h3>
+            <p>View student information</p>
+          </a>
+        </div>
+
+        <section id="library" class="dashboard-section">
+          <h2>E-Library</h2>
+
+          <p>
+            Access approved lecture notes, revision materials, and other
+            university learning resources.
+          </p>
+
+          <div class="library-toolbar">
+            <label for="library-search">Search materials</label>
+            <input
+              type="search"
+              id="library-search"
+              placeholder="Search by title or course..."
+            />
+
+            <label for="course-filter">Filter by course</label>
+            <select id="course-filter">
+              <option value="">All courses</option>
+            </select>
+
+            <label for="library-sort">Sort materials</label>
+            <select id="library-sort">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="title">Title (A–Z)</option>
+            </select>
+          </div>
+
+          <p id="library-results-count" aria-live="polite">
+            Preparing your learning resources...
+          </p>
+
+          <div
+            id="library-loading"
+            class="library-loading"
+            role="status"
+            aria-live="polite"
+            hidden
+          >
+            <span class="library-spinner" aria-hidden="true"></span>
+            <p>Loading your learning materials...</p>
+            <span class="library-loading-note">Please wait a moment.</span>
+          </div>
+
+          <div id="library-content">
+            <p class="empty-state">No materials available yet.</p>
+          </div>
+
+          <section id="pdf-preview-section" hidden>
+            <div class="pdf-preview-header">
+              <h3 id="pdf-preview-title">PDF Preview</h3>
+              <button id="close-pdf-preview" type="button">
+                Close Preview
+              </button>
+            </div>
+
+            <iframe
+              id="pdf-preview-frame"
+              title="Learning material PDF preview"
+              width="100%"
+              height="600"
+              style="border: 1px solid #cbd5e1; border-radius: 8px"
+            ></iframe>
+          </section>
+
+          <div id="library-pagination" class="library-pagination">
+            <button id="library-previous" type="button" disabled>
+              Previous
+            </button>
+
+            <span id="library-page-info">Page 1</span>
+
+            <button id="library-next" type="button" disabled>Next</button>
+          </div>
+        </section>
+
+        <section id="my-courses" class="dashboard-section">
+          <h2>My Courses</h2>
+          <p>View the courses you are enrolled in.</p>
+
+          <div id="student-courses-list">
+            <p class="empty-state">No courses have been added yet.</p>
+          </div>
+        </section>
+
+        <section id="cats" class="dashboard-section">
+          <h2>Online CATs</h2>
+
+          <p>View your available assessments and their instructions here.</p>
+
+          <div id="cats-content">
+            <p class="empty-state">No CATs scheduled.</p>
+          </div>
+
+          <!-- CAT Examination Area -->
+          <div id="cat-exam-area" hidden>
+            <h2 id="exam-title">CAT Examination</h2>
+
+            <p id="exam-instructions"></p>
+
+            <p>
+              Time remaining:
+              <span id="cat-timer">00:00</span>
+            </p>
+
+            <form id="cat-exam-form">
+              <div id="cat-questions-container"></div>
+
+              <button type="submit" id="submit-cat-button">Submit CAT</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- MY CAT RESULTS -->
+        <section id="my-results" class="dashboard-section">
+          <h2>My CAT Results</h2>
+
+          <p>View your completed CAT assessments and performance.</p>
+          <div class="results-summary">
+            <div class="results-summary-card">
+              <h3>Completed CATs</h3>
+              <p id="completed-cats">0</p>
+            </div>
+
+            <div class="results-summary-card">
+              <h3>Average Score</h3>
+              <p id="average-score">0%</p>
+            </div>
+
+            <div class="results-summary-card">
+              <h3>Highest Score</h3>
+              <p id="highest-score">0%</p>
+            </div>
+          </div>
+
+          <div id="student-results-content">
+            <p>Loading your results...</p>
+          </div>
+        </section>
+
+        <section id="profile" class="dashboard-section">
+          <h2>My Profile</h2>
+          <div class="profile-card">
+            <div class="profile-avatar">
+              <span id="profile-initial">S</span>
+            </div>
+
+            <div class="profile-details">
+              <p>
+                <strong>Email:</strong>
+                <span id="profile-email">Loading...</span>
+              </p>
+              <p>
+                <strong>Full Name:</strong>
+                <span id="profile-name">Not provided</span>
+              </p>
+              <p>
+                <strong>Role:</strong> <span id="profile-role">Student</span>
+              </p>
+            </div>
+
+            <button type="button" id="edit-profile-btn" class="login-button">
+              Edit Profile
+            </button>
+          </div>
+
+          <p id="profile-message" role="status"></p>
+        </section>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="student-auth.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

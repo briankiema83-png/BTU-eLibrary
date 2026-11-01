@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTU ELIBRARY | Bomet University</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="brand">
+            <div class="brand-icon">B</div>
+            <div>
+                <h1>BTU ELIBRARY</h1>
+                <p>Bomet University</p>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="#home">Home</a>
+            <a href="#library">E-Library</a>
+            <a href="#cats">Online CATs</a>
+
+<a href="student.html">Student Dashboard</a>
+
+        </nav>
+
+        <a href="login.html" class="login-button">Sign In</a>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <p class="eyebrow">BOMET UNIVERSITY</p>
+            <h2>Your digital learning space.</h2>
+            <p class="hero-description">
+                Access course materials and online assessments
+                in one place.
+            </p>
+
+            <form class="search-form" id="search-form">
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search course materials..."
+                    aria-label="Search course materials"
+                >
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="library-section" id="library">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">LEARNING RESOURCES</p>
+                    <h2>E-Library</h2>
+                </div>
+            </div>
+
+            <div class="empty-state" id="library-content">
+                <div class="empty-icon">📚</div>
+                <h3>No materials available yet</h3>
+                <p>
+                    Course materials will appear here when
+                    authorized lecturers upload them.
+                </p>
+            </div>
+        </section>
+
+        <section class="cats-section" id="cats">
+            <p class="eyebrow">ASSESSMENTS</p>
+            <h2>Online CATs</h2>
+            <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <h3>No CATs scheduled</h3>
+                <p>Scheduled assessments will appear here.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BTU ELIBRARY · Bomet University</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
